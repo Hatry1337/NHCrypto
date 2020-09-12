@@ -1,14 +1,15 @@
 {
   "name": "nhcrypto",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simple insecure encryptor/decryptor, that's uses nhentai codes to encrypt and decrypt text.",
   "main": "index.js",
   "author": {
     "name": "Thomas Hatrysu"
   },
   "dependencies": {
+    "html-entities": "^1.3.1",
     "node-html-parser": "^1.2.20",
-    "request": "2.88.2"
+    "request": "2.88.2",
   },
   "bugs": {
     "url": "https://github.com/Hatry1337/nhcrypto/issues"

@@ -1,11 +1,18 @@
 'use strict';
 const request = require("request");
 const htmparse = require("node-html-parser");
+const htmlents = new require('html-entities').XmlEntities;
 
 function searchHent(text, page, callback) {
+    var url;
+    if(isNaN(parseInt(text))){
+        url = 'https://nhentai.net/search/?q=' + text + '&sort=popular&page='+page;
+    }else{
+        url = 'https://nhentai.net/search/?q=a+' + text + '&sort=popular&page='+page
+    }
     request(
         {
-            uri: 'https://nhentai.net/search/?q=' + text + '&sort=popular&page='+page,
+            uri: url,
         }, function (err, res, body) {
         if (err) {
             throw err;
@@ -14,10 +21,11 @@ function searchHent(text, page, callback) {
     });
 }
 
+
 function getHent(code, callback) {
     request(
     {
-        uri: 'https://nhentai.net/g/' + code + '/',
+        uri: 'https://nhentai.net/g/' + parseInt(code) + '/',
     }, function (err, res, body) {
             if (err) {
                 throw err;
@@ -25,7 +33,7 @@ function getHent(code, callback) {
             var regex = /<h1 class="title"><span class="before">(.*)<\/span><span class="pretty">(.*)<\/span><span class="after">(.*)<\/span><\/h1>/;
             var matches = regex.exec(body.toString());
             var name = matches[1] + matches[2] + matches[3];
-            callback(name);
+            callback(htmlents.decode(name));
     });
 }
 
@@ -48,7 +56,7 @@ function parseHents(text, callback) {
         if (matches) {
             hents.push({
                 code: matches[1],
-                name: val.childNodes[0].lastChild.lastChild.rawText
+                name: htmlents.decode(val.childNodes[0].lastChild.lastChild.rawText)
             });
         }
 
@@ -97,7 +105,7 @@ function crypt(text, callback) {
                 if (!hnt) {
                     recC(text, callback);
                 } else {
-                    crypted += hnt.code;
+                    crypted += pad(hnt.code, 6);
                     crypted += pad(index, 3);
                     crypted += pad(word.length, 3);
                     text = text.substring(word.length);
