@@ -15,4 +15,3 @@ Simple insecure encryptor/decryptor, that's uses nhentai codes to encrypt and de
   nh.Decrypt("153098015007278059018006", (decrypted) =>{
     console.log(decrypted); // returns "hello, world!"
   });
-  ```
