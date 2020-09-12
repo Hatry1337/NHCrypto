@@ -1,13 +1,18 @@
 {
   "name": "nhcrypto",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "NHCrypto",
-  "main": "app.js",
+  "main": "index.js",
   "author": {
-    "name": ""
+    "name": "Thomas Hatrysu"
   },
   "dependencies": {
     "node-html-parser": "^1.2.20",
     "request": "2.88.2"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Hatry1337/nhcrypto/issues"
+  },
+  "homepage": "https://github.com/Hatry1337/nhcrypto#readme",
+  "license": "MIT"
 }
