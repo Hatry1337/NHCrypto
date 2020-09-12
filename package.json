@@ -1,7 +1,7 @@
 {
   "name": "nhcrypto",
   "version": "0.0.4",
-  "description": "NHCrypto",
+  "description": "Simple insecure encryptor/decryptor, that's uses nhentai codes to encrypt and decrypt text.",
   "main": "index.js",
   "author": {
     "name": "Thomas Hatrysu"
