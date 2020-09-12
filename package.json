@@ -1,6 +1,6 @@
 {
   "name": "nhcrypto",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "NHCrypto",
   "main": "index.js",
   "author": {
@@ -13,6 +13,14 @@
   "bugs": {
     "url": "https://github.com/Hatry1337/nhcrypto/issues"
   },
+  "keywords": [
+    "simple",
+    "insecure",
+    "fun",
+    "encryption",
+    "crypt",
+    "nhentai"
+  ],
   "homepage": "https://github.com/Hatry1337/nhcrypto#readme",
   "license": "MIT"
 }
