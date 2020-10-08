@@ -1,6 +1,6 @@
 {
   "name": "nhcrypto",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simple insecure encryptor/decryptor, that's uses nhentai codes to encrypt and decrypt text.",
   "main": "index.js",
   "author": {

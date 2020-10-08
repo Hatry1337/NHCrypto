@@ -2,6 +2,8 @@
 const request = require("request");
 const htmparse = require("node-html-parser");
 const htmlents = new require('html-entities').XmlEntities;
+const chars_alph = "`~@#$%^&*()-_=+\",.'№;:"
+
 
 function searchHent(text, page, callback) {
     var url;
@@ -23,6 +25,10 @@ function searchHent(text, page, callback) {
 
 
 function getHent(code, callback) {
+    if(code === "999999"){
+        callback(chars_alph);
+        return;
+    }
     request(
     {
         uri: 'https://nhentai.net/g/' + parseInt(code) + '/',
@@ -66,8 +72,6 @@ function parseHents(text, callback) {
         }
     });
 }
-
-const chars_alph = "`~@#$%^&*()-_=+\",.'№;:"
 
 function findWord(word, callback) {
     searchHent(word, 1, (data) => {
