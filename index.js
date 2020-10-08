@@ -28,19 +28,20 @@ function getHent(code, callback) {
     if(code === "999999"){
         callback(chars_alph);
         return;
+    }else{
+        request(
+            {
+                uri: 'https://nhentai.net/g/' + parseInt(code) + '/',
+            }, function (err, res, body) {
+                    if (err) {
+                        throw err;
+                    }
+                    var regex = /<h1 class="title"><span class="before">(.*)<\/span><span class="pretty">(.*)<\/span><span class="after">(.*)<\/span><\/h1>/;
+                    var matches = regex.exec(body.toString());
+                    var name = matches[1] + matches[2] + matches[3];
+                    callback(htmlents.decode(name));
+        });
     }
-    request(
-    {
-        uri: 'https://nhentai.net/g/' + parseInt(code) + '/',
-    }, function (err, res, body) {
-            if (err) {
-                throw err;
-            }
-            var regex = /<h1 class="title"><span class="before">(.*)<\/span><span class="pretty">(.*)<\/span><span class="after">(.*)<\/span><\/h1>/;
-            var matches = regex.exec(body.toString());
-            var name = matches[1] + matches[2] + matches[3];
-            callback(htmlents.decode(name));
-    });
 }
 
 function parseHents(text, callback) {
