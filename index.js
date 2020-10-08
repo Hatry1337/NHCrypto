@@ -67,14 +67,21 @@ function parseHents(text, callback) {
     });
 }
 
+const chars_alph = "`~@#$%^&*()-_=+\",.'№;:"
+
 function findWord(word, callback) {
     searchHent(word, 1, (data) => {
         parseHents(data, (hents) => {
+            if(chars_alph.indexOf(word) !== -1 && word !== ""){
+                callback({code: "999999", name: chars_alph}, word, chars_alph.indexOf(word));
+                return
+            }
             if (hents.length === 0) {
                 findWord(word.substring(0, word.length - 1), callback);
             } else {
                 var wordEx = false;
                 for (var i = 0; i < hents.length; i++) {
+                    console.log(hents[i]);
                     if (hents[i].name.toLowerCase().indexOf(word.toLowerCase()) !== -1) {
                         callback(hents[i], word, hents[i].name.toLowerCase().indexOf(word.toLowerCase()));
                         wordEx = true;
