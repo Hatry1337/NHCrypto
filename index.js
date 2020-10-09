@@ -86,7 +86,6 @@ function findWord(word, callback) {
             } else {
                 var wordEx = false;
                 for (var i = 0; i < hents.length; i++) {
-                    console.log(hents[i]);
                     if (hents[i].name.toLowerCase().indexOf(word.toLowerCase()) !== -1) {
                         callback(hents[i], word, hents[i].name.toLowerCase().indexOf(word.toLowerCase()));
                         wordEx = true;
